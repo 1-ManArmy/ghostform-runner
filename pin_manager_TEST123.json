@@ -1,0 +1,25 @@
+{
+  "booking_id": "TEST123",
+  "tried_pins": [
+    "0080",
+    "1243",
+    "7798",
+    "0966",
+    "0762"
+  ],
+  "success_pin": null,
+  "total_attempts": 0,
+  "agents_used": [
+    {
+      "agent": "TEST_AGENT",
+      "pins": [
+        "0080",
+        "1243",
+        "7798",
+        "0966",
+        "0762"
+      ],
+      "timestamp": "2025-07-15 18:23:11"
+    }
+  ]
+}
