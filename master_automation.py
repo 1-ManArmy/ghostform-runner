@@ -8,7 +8,7 @@ from pin_manager import get_pin_manager
 
 # --- Configurable parameters ---
 parser = argparse.ArgumentParser(description="Master automation for Booking.com PIN testing")
-parser.add_argument('--confirmation', type=str, default="1234567890", help='Confirmation number')
+parser.add_argument('--confirmation', type=str, default="6160911170", help='Confirmation number')
 parser.add_argument('--pins', type=str, default="1,2,3,4", help='Comma-separated PINs (IGNORED - now uses random PINs)')
 parser.add_argument('--wait', type=int, default=60, help='Wait time between attempts (seconds)')
 parser.add_argument('--headless', action='store_true', help='Run browser in headless mode')

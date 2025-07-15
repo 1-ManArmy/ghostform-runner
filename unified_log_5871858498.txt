@@ -1,7 +1,0 @@
-2025-07-15 19:09:49,5871858498,PRIMARY,1234,FAILURE,https://secure.booking.com/help/confirmation_pin_auth
-2025-07-15 19:09:50,5871858498,PRIMARY,5678,FAILURE,https://secure.booking.com/help/confirmation_pin_auth
-2025-07-15 19:09:51,5871858498,A,9012,FAILURE,https://secure.booking.com/help/confirmation_pin_auth
-2025-07-15 19:09:52,5871858498,A,3456,FAILURE,https://secure.booking.com/help/confirmation_pin_auth
-2025-07-15 19:09:53,5871858498,B,7890,FAILURE,https://secure.booking.com/help/confirmation_pin_auth
-2025-07-15 19:09:54,5871858498,B,1111,FAILURE,https://secure.booking.com/help/confirmation_pin_auth
-2025-07-15 19:09:55,5871858498,C,1965,SUCCESS,https://secure.booking.com/help/confirmation_pin_auth?unique_order_id=TEST123

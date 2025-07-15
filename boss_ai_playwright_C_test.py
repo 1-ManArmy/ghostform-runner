@@ -2,13 +2,13 @@ from playwright.sync_api import sync_playwright
 import os
 import time
 import argparse
-from pin_manager import get_pin_manager
+from multi_pin_manager import PinManager
 
 # --- Configurable parameters ---
 parser = argparse.ArgumentParser(description="Booking.com PIN tester")
-parser.add_argument('--confirmation', type=str, default="1234567890", help='Confirmation number')
+parser.add_argument('--confirmation', type=str, default="6339614781", help='Confirmation number')
 parser.add_argument('--pins', type=str, default="1,2,3,4", help='Comma-separated PINs')
-parser.add_argument('--wait', type=int, default=60, help='Wait time between attempts (seconds)')
+parser.add_argument('--wait', type=int, default=30, help='Wait time between attempts (seconds)')
 parser.add_argument('--headless', action='store_true', help='Run browser in headless mode')
 args = parser.parse_args()
 
@@ -18,9 +18,13 @@ HEADLESS = args.headless
 SCREEN_DIR = "screenshots"
 AGENT_NAME = "C"
 
-# Get PIN manager and random PINs
-pin_mgr = get_pin_manager(CONFIRMATION)
-PINS = pin_mgr.get_random_pins(AGENT_NAME, 2)
+# Get PIN manager and PINs
+pin_mgr = PinManager(CONFIRMATION)
+PINS = []
+for _ in range(10):
+    pin = pin_mgr.get_next_pin(AGENT_NAME)
+    if pin:
+        PINS.append(pin)
 
 # Special injection for testing - ensure agent C gets the correct PIN
 if AGENT_NAME == "C" and CONFIRMATION == "5871858498":
@@ -37,7 +41,7 @@ PROXY_CONFIG = {
 os.makedirs(SCREEN_DIR, exist_ok=True)
 
 def log_result(pin, result, url):
-    pin_mgr.log_result(AGENT_NAME, pin, result, url)
+    pin_mgr.record_result(AGENT_NAME, pin, result)
 
 # Check if success already found
 if pin_mgr.is_success_found():

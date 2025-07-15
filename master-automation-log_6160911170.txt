@@ -1,0 +1,274 @@
+2025-07-16 00:22:08 - MASTER: === MASTER AUTOMATION STARTED ===
+2025-07-16 00:22:08 - MASTER: Configuration: Confirmation=6160911170, Wait=30s, Headless=True
+2025-07-16 00:22:08 - MASTER: Total files to process: 27
+2025-07-16 00:22:08 - MASTER: Initial stats: 0 PINs tried, 10000 remaining
+2025-07-16 00:22:08 - MASTER: [1/27] Processing: boss_ai_playwright.py
+2025-07-16 00:22:08 - MASTER: Starting agent: boss_ai_playwright.py
+2025-07-16 00:28:41 - MASTER: Agent boss_ai_playwright.py completed with return code: 0
+2025-07-16 00:28:41 - MASTER: Agent boss_ai_playwright.py stdout: rm manually for PIN: 4063
+ Error: Timeout 45000ms exceeded.
+ Waiting 30s before next...
+
+ Please fill the form manually for PIN: 4402
+ Error: Timeout 45000ms exceeded.
+ Waiting 30s before next...
+
+ Please fill the form manually for PIN: 4760
+ Error: Timeout 45000ms exceeded.
+ Waiting 30s before next...
+
+ Please fill the form manually for PIN: 6832
+ Error: Timeout 45000ms exceeded.
+ Waiting 30s before next...
+
+--- Summary Report ---
+Total attempts: 5
+Success: 0
+Failure: 0
+Unknown: 0
+Exception: 5
+
+2025-07-16 00:28:41 - MASTER: Agent boss_ai_playwright.py completed without finding PIN
+2025-07-16 00:28:41 - MASTER: Waiting 5s before next agent...
+2025-07-16 00:28:46 - MASTER: [2/27] Processing: boss_ai_playwright_A.py
+2025-07-16 00:28:46 - MASTER: Starting agent: boss_ai_playwright_A.py
+2025-07-16 00:36:43 - MASTER: === MASTER AUTOMATION STARTED ===
+2025-07-16 00:36:43 - MASTER: Configuration: Confirmation=6160911170, Wait=30s, Headless=True
+2025-07-16 00:36:43 - MASTER: Total files to process: 27
+2025-07-16 00:36:43 - MASTER: Initial stats: 10 PINs tried, 9990 remaining
+2025-07-16 00:36:43 - MASTER: [1/27] Processing: boss_ai_playwright.py
+2025-07-16 00:36:43 - MASTER: Starting agent: boss_ai_playwright.py
+2025-07-16 00:41:07 - MASTER: === MASTER AUTOMATION STARTED ===
+2025-07-16 00:41:07 - MASTER: Configuration: Confirmation=6160911170, Wait=30s, Headless=True
+2025-07-16 00:41:07 - MASTER: Total files to process: 27
+2025-07-16 00:41:07 - MASTER: Initial stats: 15 PINs tried, 9985 remaining
+2025-07-16 00:41:07 - MASTER: [1/27] Processing: boss_ai_playwright.py
+2025-07-16 00:41:07 - MASTER: Starting agent: boss_ai_playwright.py
+2025-07-16 00:48:17 - MASTER: Agent boss_ai_playwright.py completed with return code: 0
+2025-07-16 00:48:17 - MASTER: Agent boss_ai_playwright.py stdout:  before next...
+
+ Please fill the form manually for PIN: 0638
+ Error: Page.wait_for_function: Timeout 45000ms exceeded.
+ Waiting 30s before next...
+
+ Please fill the form manually for PIN: 5811
+ Error: Page.wait_for_function: Timeout 45000ms exceeded.
+ Waiting 30s before next...
+
+ Please fill the form manually for PIN: 0455
+ Error: Page.wait_for_function: Timeout 45000ms exceeded.
+ Waiting 30s before next...
+
+--- Summary Report ---
+Total attempts: 5
+Success: 0
+Failure: 0
+Unknown: 0
+Exception: 5
+
+2025-07-16 00:48:17 - MASTER: Agent boss_ai_playwright.py completed without finding PIN
+2025-07-16 00:48:17 - MASTER: Waiting 5s before next agent...
+2025-07-16 00:48:22 - MASTER: [2/27] Processing: boss_ai_playwright_A.py
+2025-07-16 00:48:22 - MASTER: Starting agent: boss_ai_playwright_A.py
+2025-07-16 00:55:10 - MASTER: Agent boss_ai_playwright_A.py completed with return code: 0
+2025-07-16 00:55:10 - MASTER: Agent boss_ai_playwright_A.py stdout:  before next...
+
+ Please fill the form manually for PIN: 8218
+ Error: Page.wait_for_function: Timeout 45000ms exceeded.
+ Waiting 30s before next...
+
+ Please fill the form manually for PIN: 9276
+ Error: Page.wait_for_function: Timeout 45000ms exceeded.
+ Waiting 30s before next...
+
+ Please fill the form manually for PIN: 2480
+ Error: Page.wait_for_function: Timeout 45000ms exceeded.
+ Waiting 30s before next...
+
+--- Summary Report ---
+Total attempts: 5
+Success: 0
+Failure: 0
+Unknown: 0
+Exception: 5
+
+2025-07-16 00:55:10 - MASTER: Agent boss_ai_playwright_A.py completed without finding PIN
+2025-07-16 00:55:10 - MASTER: Waiting 5s before next agent...
+2025-07-16 00:55:15 - MASTER: [3/27] Processing: boss_ai_playwright_B.py
+2025-07-16 00:55:15 - MASTER: Starting agent: boss_ai_playwright_B.py
+2025-07-16 01:02:15 - MASTER: Agent boss_ai_playwright_B.py completed with return code: 0
+2025-07-16 01:02:15 - MASTER: Agent boss_ai_playwright_B.py stdout:  before next...
+
+ Please fill the form manually for PIN: 6425
+ Error: Page.wait_for_function: Timeout 45000ms exceeded.
+ Waiting 30s before next...
+
+ Please fill the form manually for PIN: 4765
+ Error: Page.wait_for_function: Timeout 45000ms exceeded.
+ Waiting 30s before next...
+
+ Please fill the form manually for PIN: 8884
+ Error: Page.wait_for_function: Timeout 45000ms exceeded.
+ Waiting 30s before next...
+
+--- Summary Report ---
+Total attempts: 5
+Success: 0
+Failure: 0
+Unknown: 0
+Exception: 5
+
+2025-07-16 01:02:15 - MASTER: Agent boss_ai_playwright_B.py completed without finding PIN
+2025-07-16 01:02:15 - MASTER: Waiting 5s before next agent...
+2025-07-16 01:02:20 - MASTER: [4/27] Processing: boss_ai_playwright_C.py
+2025-07-16 01:02:20 - MASTER: Starting agent: boss_ai_playwright_C.py
+2025-07-16 01:09:33 - MASTER: Agent boss_ai_playwright_C.py completed with return code: 0
+2025-07-16 01:09:33 - MASTER: Agent boss_ai_playwright_C.py stdout:  before next...
+
+ Please fill the form manually for PIN: 6408
+ Error: Page.wait_for_function: Timeout 45000ms exceeded.
+ Waiting 30s before next...
+
+ Please fill the form manually for PIN: 0198
+ Error: Page.wait_for_function: Timeout 45000ms exceeded.
+ Waiting 30s before next...
+
+ Please fill the form manually for PIN: 9254
+ Error: Page.wait_for_function: Timeout 45000ms exceeded.
+ Waiting 30s before next...
+
+--- Summary Report ---
+Total attempts: 5
+Success: 0
+Failure: 0
+Unknown: 0
+Exception: 5
+
+2025-07-16 01:09:33 - MASTER: Agent boss_ai_playwright_C.py completed without finding PIN
+2025-07-16 01:09:33 - MASTER: Waiting 5s before next agent...
+2025-07-16 01:09:38 - MASTER: [5/27] Processing: boss_ai_playwright_D.py
+2025-07-16 01:09:38 - MASTER: Starting agent: boss_ai_playwright_D.py
+2025-07-16 01:16:43 - MASTER: Agent boss_ai_playwright_D.py completed with return code: 0
+2025-07-16 01:16:43 - MASTER: Agent boss_ai_playwright_D.py stdout:  before next...
+
+ Please fill the form manually for PIN: 2372
+ Error: Page.wait_for_function: Timeout 45000ms exceeded.
+ Waiting 30s before next...
+
+ Please fill the form manually for PIN: 4465
+ Error: Page.wait_for_function: Timeout 45000ms exceeded.
+ Waiting 30s before next...
+
+ Please fill the form manually for PIN: 0819
+ Error: Page.wait_for_function: Timeout 45000ms exceeded.
+ Waiting 30s before next...
+
+--- Summary Report ---
+Total attempts: 5
+Success: 0
+Failure: 0
+Unknown: 0
+Exception: 5
+
+2025-07-16 01:16:43 - MASTER: Agent boss_ai_playwright_D.py completed without finding PIN
+2025-07-16 01:16:43 - MASTER: Waiting 5s before next agent...
+2025-07-16 01:16:48 - MASTER: [6/27] Processing: boss_ai_playwright_E.py
+2025-07-16 01:16:48 - MASTER: Starting agent: boss_ai_playwright_E.py
+2025-07-16 01:17:20 - MASTER: Agent boss_ai_playwright_E.py completed with return code: 1
+2025-07-16 01:17:20 - MASTER: Agent boss_ai_playwright_E.py stdout:  Agent E will try these PINs: ['2030', '6764', '8954', '4828', '4542']
+
+ Please fill the form manually for PIN: 2030
+
+2025-07-16 01:17:20 - MASTER: Agent boss_ai_playwright_E.py stderr: y", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\ghostform-runner\venv\Lib\site-packages\playwright\_impl\_connection.py", line 558, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://secure.booking.com/help/confirmation_pin_auth", waiting until "load"
+
+
+2025-07-16 01:17:20 - MASTER: Agent boss_ai_playwright_E.py completed without finding PIN
+2025-07-16 01:17:20 - MASTER: Waiting 5s before next agent...
+2025-07-16 01:17:25 - MASTER: [7/27] Processing: boss_ai_playwright_F.py
+2025-07-16 01:17:25 - MASTER: Starting agent: boss_ai_playwright_F.py
+2025-07-16 01:20:57 - MASTER: Agent boss_ai_playwright_F.py completed with return code: 1
+2025-07-16 01:20:57 - MASTER: Agent boss_ai_playwright_F.py stdout:  Agent F will try these PINs: ['7717', '9077', '7007', '8188', '0960']
+
+ Please fill the form manually for PIN: 7717
+ Error: Page.wait_for_function: Timeout 45000ms exceeded.
+ Waiting 30s before next...
+
+ Please fill the form manually for PIN: 9077
+ Error: Page.wait_for_function: Timeout 45000ms exceeded.
+ Waiting 30s before next...
+
+ Please fill the form manually for PIN: 7007
+
+2025-07-16 01:20:57 - MASTER: Agent boss_ai_playwright_F.py stderr: y", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\ghostform-runner\venv\Lib\site-packages\playwright\_impl\_connection.py", line 558, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://secure.booking.com/help/confirmation_pin_auth", waiting until "load"
+
+
+2025-07-16 01:20:57 - MASTER: Agent boss_ai_playwright_F.py completed without finding PIN
+2025-07-16 01:20:57 - MASTER: Waiting 5s before next agent...
+2025-07-16 01:21:02 - MASTER: [8/27] Processing: boss_ai_playwright_G.py
+2025-07-16 01:21:02 - MASTER: Starting agent: boss_ai_playwright_G.py
+2025-07-16 01:28:00 - MASTER: Agent boss_ai_playwright_G.py completed with return code: 0
+2025-07-16 01:28:00 - MASTER: Agent boss_ai_playwright_G.py stdout:  before next...
+
+ Please fill the form manually for PIN: 0684
+ Error: Page.wait_for_function: Timeout 45000ms exceeded.
+ Waiting 30s before next...
+
+ Please fill the form manually for PIN: 5206
+ Error: Page.wait_for_function: Timeout 45000ms exceeded.
+ Waiting 30s before next...
+
+ Please fill the form manually for PIN: 0509
+ Error: Page.wait_for_function: Timeout 45000ms exceeded.
+ Waiting 30s before next...
+
+--- Summary Report ---
+Total attempts: 5
+Success: 0
+Failure: 0
+Unknown: 0
+Exception: 5
+
+2025-07-16 01:28:00 - MASTER: Agent boss_ai_playwright_G.py completed without finding PIN
+2025-07-16 01:28:00 - MASTER: Waiting 5s before next agent...
+2025-07-16 01:28:05 - MASTER: [9/27] Processing: boss_ai_playwright_H.py
+2025-07-16 01:28:05 - MASTER: Starting agent: boss_ai_playwright_H.py
+2025-07-16 01:35:21 - MASTER: Agent boss_ai_playwright_H.py completed with return code: 0
+2025-07-16 01:35:21 - MASTER: Agent boss_ai_playwright_H.py stdout:  before next...
+
+ Please fill the form manually for PIN: 4269
+ Error: Page.wait_for_function: Timeout 45000ms exceeded.
+ Waiting 30s before next...
+
+ Please fill the form manually for PIN: 2130
+ Error: Page.wait_for_function: Timeout 45000ms exceeded.
+ Waiting 30s before next...
+
+ Please fill the form manually for PIN: 9177
+ Error: Page.wait_for_function: Timeout 45000ms exceeded.
+ Waiting 30s before next...
+
+--- Summary Report ---
+Total attempts: 5
+Success: 0
+Failure: 0
+Unknown: 0
+Exception: 5
+
+2025-07-16 01:35:21 - MASTER: Agent boss_ai_playwright_H.py completed without finding PIN
+2025-07-16 01:35:21 - MASTER: Waiting 5s before next agent...
+2025-07-16 01:35:26 - MASTER: [10/27] Processing: boss_ai_playwright_I.py
+2025-07-16 01:35:26 - MASTER: Starting agent: boss_ai_playwright_I.py

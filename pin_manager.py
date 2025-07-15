@@ -34,8 +34,8 @@ class PinManager:
         with open(self.data_file, 'w') as f:
             json.dump(self.data, f, indent=2)
     
-    def get_random_pins(self, agent_name, count=2):
-        """Get 2 random unique PINs that haven't been tried"""
+    def get_random_pins(self, agent_name, count=5):
+        """Get 5 random unique PINs that haven't been tried"""
         if self.data["success_pin"]:
             return []  # Already found success
         
