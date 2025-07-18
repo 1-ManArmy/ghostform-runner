@@ -2,6 +2,7 @@
     "recommendations": [
         "timonwong.shellcheck",
         "matthiesen-technology.yaml-with-script",
-        "ms-kubernetes-tools.vscode-aks-tools"
+        "ms-kubernetes-tools.vscode-aks-tools",
+        "ms-vscode.remote-server"
     ]
 }
