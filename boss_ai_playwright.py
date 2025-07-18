@@ -14,7 +14,7 @@ args = parser.parse_args()
 
 CONFIRMATION = args.confirmation
 WAIT_TIME = args.wait
-HEADLESS = args.headless
+HEADLESS = False  # Always show browser
 SCREEN_DIR = "screenshots"
 AGENT_NAME = "PRIMARY"
 
@@ -25,8 +25,8 @@ PINS = pin_mgr.get_random_pins(AGENT_NAME, 5)
 # --- Proxy configuration ---
 PROXY_CONFIG = {
     "server": "http://pr.oxylabs.io:7777",
-    "username": "customer-Oxylab_WFqvh",
-    "password": "Oxylab_WFqvh1"
+    "username": "customer-1proxylabs_atNPR-cc-us",
+    "password": "1proxylabs_atNPR1"
 }
 
 os.makedirs(SCREEN_DIR, exist_ok=True)

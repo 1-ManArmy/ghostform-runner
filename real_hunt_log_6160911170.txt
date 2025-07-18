@@ -1,0 +1,60 @@
+2025-07-16 10:37:23,6160911170,STEALTH_HUNTER,2423,EXCEPTION: Page.goto: Timeout 45000ms exceeded.
+Call log:
+  - navigating to "https://secure.booking.com/help/confirmation_pin_auth", waiting until "load"
+,N/A,attempt_1
+2025-07-16 10:38:13,6160911170,STEALTH_HUNTER,1779,EXCEPTION: Page.goto: Timeout 45000ms exceeded.
+Call log:
+  - navigating to "https://secure.booking.com/help/confirmation_pin_auth", waiting until "load"
+,N/A,attempt_2
+2025-07-16 10:39:02,6160911170,STEALTH_HUNTER,6787,EXCEPTION: Page.goto: Timeout 45000ms exceeded.
+Call log:
+  - navigating to "https://secure.booking.com/help/confirmation_pin_auth", waiting until "load"
+,N/A,attempt_3
+2025-07-16 10:39:51,6160911170,STEALTH_HUNTER,2923,EXCEPTION: Page.goto: Timeout 45000ms exceeded.
+Call log:
+  - navigating to "https://secure.booking.com/help/confirmation_pin_auth", waiting until "load"
+,N/A,attempt_4
+2025-07-16 10:40:40,6160911170,STEALTH_HUNTER,4045,EXCEPTION: Page.goto: Timeout 45000ms exceeded.
+Call log:
+  - navigating to "https://secure.booking.com/help/confirmation_pin_auth", waiting until "load"
+,N/A,attempt_5
+2025-07-16 10:41:30,6160911170,STEALTH_HUNTER,5466,EXCEPTION: Page.goto: Timeout 45000ms exceeded.
+Call log:
+  - navigating to "https://secure.booking.com/help/confirmation_pin_auth", waiting until "load"
+,N/A,attempt_6
+2025-07-16 10:42:19,6160911170,STEALTH_HUNTER,0835,EXCEPTION: Page.goto: Timeout 45000ms exceeded.
+Call log:
+  - navigating to "https://secure.booking.com/help/confirmation_pin_auth", waiting until "load"
+,N/A,attempt_7
+2025-07-16 10:43:09,6160911170,STEALTH_HUNTER,8520,EXCEPTION: Page.goto: Timeout 45000ms exceeded.
+Call log:
+  - navigating to "https://secure.booking.com/help/confirmation_pin_auth", waiting until "load"
+,N/A,attempt_8
+2025-07-16 10:43:59,6160911170,STEALTH_HUNTER,5632,EXCEPTION: Page.goto: Timeout 45000ms exceeded.
+Call log:
+  - navigating to "https://secure.booking.com/help/confirmation_pin_auth", waiting until "load"
+,N/A,attempt_9
+2025-07-16 11:08:05,6160911170,STEALTH_HUNTER,4458,EXCEPTION: Timeout 30000ms exceeded.,N/A,attempt_1
+2025-07-16 11:09:24,6160911170,STEALTH_HUNTER,9201,EXCEPTION: Timeout 30000ms exceeded.,N/A,attempt_2
+2025-07-16 11:10:32,6160911170,STEALTH_HUNTER,4059,EXCEPTION: Timeout 30000ms exceeded.,N/A,attempt_3
+2025-07-16 11:11:50,6160911170,STEALTH_HUNTER,2724,EXCEPTION: Timeout 30000ms exceeded.,N/A,attempt_4
+2025-07-16 11:12:36,6160911170,STEALTH_HUNTER,8806,EXCEPTION: Timeout 30000ms exceeded.,N/A,attempt_5
+2025-07-16 11:13:26,6160911170,STEALTH_HUNTER,0344,EXCEPTION: Timeout 45000ms exceeded.,N/A,attempt_6
+2025-07-16 11:14:18,6160911170,STEALTH_HUNTER,5409,EXCEPTION: Timeout 45000ms exceeded.,N/A,attempt_7
+2025-07-16 11:15:11,6160911170,STEALTH_HUNTER,8872,EXCEPTION: Timeout 45000ms exceeded.,N/A,attempt_8
+2025-07-16 11:16:20,6160911170,STEALTH_HUNTER,7114,EXCEPTION: Timeout 30000ms exceeded.,N/A,attempt_9
+2025-07-16 11:17:09,6160911170,STEALTH_HUNTER,3504,EXCEPTION: Timeout 45000ms exceeded.,N/A,attempt_10
+2025-07-16 16:36:03,6160911170,STEALTH_HUNTER,3114,EXCEPTION: Timeout 30000ms exceeded.,N/A,attempt_1
+2025-07-16 16:36:46,6160911170,STEALTH_HUNTER,2382,EXCEPTION: Timeout 30000ms exceeded.,N/A,attempt_2
+2025-07-16 16:37:32,6160911170,STEALTH_HUNTER,6685,EXCEPTION: Timeout 30000ms exceeded.,N/A,attempt_3
+2025-07-16 16:38:17,6160911170,STEALTH_HUNTER,5193,EXCEPTION: Timeout 30000ms exceeded.,N/A,attempt_4
+2025-07-16 16:39:01,6160911170,STEALTH_HUNTER,6981,EXCEPTION: Timeout 30000ms exceeded.,N/A,attempt_5
+2025-07-16 16:39:44,6160911170,STEALTH_HUNTER,8959,EXCEPTION: Timeout 30000ms exceeded.,N/A,attempt_6
+2025-07-16 16:40:28,6160911170,STEALTH_HUNTER,0609,EXCEPTION: Timeout 30000ms exceeded.,N/A,attempt_7
+2025-07-16 16:41:14,6160911170,STEALTH_HUNTER,6479,EXCEPTION: Timeout 30000ms exceeded.,N/A,attempt_8
+2025-07-16 16:41:56,6160911170,STEALTH_HUNTER,4835,EXCEPTION: Timeout 30000ms exceeded.,N/A,attempt_9
+2025-07-16 16:42:39,6160911170,STEALTH_HUNTER,0025,EXCEPTION: Timeout 30000ms exceeded.,N/A,attempt_10
+2025-07-16 16:43:26,6160911170,STEALTH_HUNTER,9736,EXCEPTION: Timeout 30000ms exceeded.,N/A,attempt_1
+2025-07-16 16:44:24,6160911170,STEALTH_HUNTER,2569,EXCEPTION: Timeout 30000ms exceeded.,N/A,attempt_2
+2025-07-16 16:45:14,6160911170,STEALTH_HUNTER,2624,EXCEPTION: Timeout 30000ms exceeded.,N/A,attempt_3
+2025-07-16 16:46:04,6160911170,STEALTH_HUNTER,3188,EXCEPTION: Timeout 30000ms exceeded.,N/A,attempt_4

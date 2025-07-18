@@ -8,20 +8,20 @@ from multi_pin_manager import PinManager
 parser = argparse.ArgumentParser(description="Booking.com PIN tester")
 parser.add_argument('--confirmation', type=str, default="6339614781", help='Confirmation number')
 parser.add_argument('--pins', type=str, default="1,2,3,4", help='Comma-separated PINs')
-parser.add_argument('--wait', type=int, default=30, help='Wait time between attempts (seconds)')
+parser.add_argument('--wait', type=int, default=15, help='Wait time between attempts (seconds)')
 parser.add_argument('--headless', action='store_true', help='Run browser in headless mode')
 args = parser.parse_args()
 
 CONFIRMATION = args.confirmation
 WAIT_TIME = args.wait
-HEADLESS = args.headless
+HEADLESS = False  # Always show browser
 SCREEN_DIR = "screenshots"
 AGENT_NAME = "1R"
 
 # Get PIN manager and PINs
 pin_mgr = PinManager(CONFIRMATION)
 PINS = []
-for _ in range(10):
+for _ in range(5):
     pin = pin_mgr.get_next_pin(AGENT_NAME)
     if pin:
         PINS.append(pin)
@@ -29,8 +29,8 @@ for _ in range(10):
 # --- Proxy configuration ---
 PROXY_CONFIG = {
     "server": "http://pr.oxylabs.io:7777",
-    "username": "customer-Oxylab_WFqvh",
-    "password": "Oxylab_WFqvh1"
+    "username": "customer-1proxylabs_atNPR-cc-us",
+    "password": "1proxylabs_atNPR1"
 }
 
 os.makedirs(SCREEN_DIR, exist_ok=True)

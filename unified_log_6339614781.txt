@@ -15,3 +15,11 @@
 2025-07-16 02:23:03,6339614781,C,4718,EXCEPTION,https://secure.booking.com/help/confirmation_pin_auth
 2025-07-16 02:24:28,6339614781,C,9251,EXCEPTION,https://secure.booking.com/help/confirmation_pin_auth
 2025-07-16 02:25:46,6339614781,C,1965,EXCEPTION,https://secure.booking.com/help/confirmation_pin_auth
+2025-07-16 02:29:44,6339614781,E,0910,EXCEPTION,https://secure.booking.com/help/confirmation_pin_auth
+2025-07-16 02:40:51,6339614781,1A,6941,EXCEPTION,https://secure.booking.com/help/confirmation_pin_auth
+2025-07-16 02:42:10,6339614781,1A,9261,EXCEPTION,https://secure.booking.com/help/confirmation_pin_auth
+2025-07-18 17:57:32,6339614781,1B,1916,EXCEPTION,https://secure.booking.com/help/confirmation_pin_auth
+2025-07-18 17:58:36,6339614781,1B,8192,EXCEPTION,https://secure.booking.com/help/confirmation_pin_auth
+2025-07-18 17:59:42,6339614781,1B,2190,EXCEPTION,https://secure.booking.com/help/confirmation_pin_auth
+2025-07-18 18:00:48,6339614781,1B,6850,EXCEPTION,https://secure.booking.com/help/confirmation_pin_auth
+2025-07-18 18:02:29,6339614781,1C,0361,EXCEPTION,https://secure.booking.com/help/confirmation_pin_auth

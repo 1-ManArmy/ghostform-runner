@@ -86,20 +86,27 @@ class PinManager:
     
     def _load_data(self):
         """Load existing PIN data"""
-        if os.path.exists(self.data_file):
-            try:
-                with open(self.data_file, 'r') as f:
-                    return json.load(f)
-            except:
-                pass
-        
-        return {
+        default_data = {
             'used_pins': [],
             'success_pin': None,
             'total_attempts': 0,
             'agents_used': [],
             'last_updated': None
         }
+        
+        if os.path.exists(self.data_file):
+            try:
+                with open(self.data_file, 'r') as f:
+                    data = json.load(f)
+                    # Ensure all required keys exist
+                    for key in default_data:
+                        if key not in data:
+                            data[key] = default_data[key]
+                    return data
+            except:
+                pass
+        
+        return default_data
     
     def _save_data(self):
         """Save PIN data"""
@@ -114,6 +121,10 @@ class PinManager:
             if self.data.get('success_pin'):
                 return None
             
+            # Ensure used_pins exists
+            if 'used_pins' not in self.data:
+                self.data['used_pins'] = []
+            
             # Generate random PIN not in used list
             used_pins = set(self.data['used_pins'])
             
@@ -123,6 +134,8 @@ class PinManager:
                 pin = f"{random.randint(0, 9999):04d}"
                 if pin not in used_pins:
                     self.data['used_pins'].append(pin)
+                    if 'agents_used' not in self.data:
+                        self.data['agents_used'] = []
                     if agent_name not in self.data['agents_used']:
                         self.data['agents_used'].append(agent_name)
                     self._save_data()
