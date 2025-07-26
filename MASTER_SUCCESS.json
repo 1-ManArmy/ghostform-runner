@@ -1,0 +1,20 @@
+{
+  "booking_id": "5727559423",
+  "correct_pin": "1759",
+  "success_url": "https://secure.booking.com/help/confirmation_pin_auth",
+  "agent": "MASTER_001",
+  "attempt_number": 1,
+  "timestamp": "2025-07-25 03:14:17",
+  "proxy_used": {
+    "server": "https://us-pr.oxylabs.io:10000",
+    "username": "customer-oxy1p_hnzsA",
+    "password": "oxy1p_hnzsA1"
+  },
+  "total_pins_tested": [
+    "1759",
+    "5585",
+    "2390",
+    "3008",
+    "2963"
+  ]
+}
