@@ -6,7 +6,7 @@ import argparse
 # --- Configurable parameters ---
 parser = argparse.ArgumentParser(description="Booking.com PIN tester")
 parser.add_argument('--confirmation', type=str, default="5871858498", help='Confirmation number')
-parser.add_argument('--pins', type=str, default="2847,7391,1965,5629,8403", help='Comma-separated PINs')
+parser.add_argument('--pins', type=str, default="2847,7391,8403,5629,1965", help='Comma-separated PINs')
 parser.add_argument('--wait', type=int, default=10, help='Wait time between attempts (seconds)')
 parser.add_argument('--headless', action='store_false', help='Run browser in headless mode')
 args = parser.parse_args()
@@ -34,9 +34,9 @@ with sync_playwright() as p:
     
     # PROXY CONFIGURATION - STEALTH MODE ACTIVATED!
     proxy_config = {
-        "server": "http://pr.oxylabs.io:7777",
-        "username": "customer-1proxylabs_atNPR",
-        "password": "1proxylabs_atNPR1"
+        "server": "https://pr.oxylabs.io:7777",
+        "username": "customer-oxy1p_hnzsA",
+        "password": "oxy1p_hnzsA1"
     }
     print(f"🛡️ STEALTH MODE: Proxy configured - {proxy_config['server']}")
     

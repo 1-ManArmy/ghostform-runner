@@ -1,0 +1,61 @@
+# 🎯 MISSION CONTROL CENTER
+# PIN Pool: 0000-9999 (10,000 total PINs)
+# 4 Agents, 5 PINs each cycle
+
+mission:
+  name: "GHOSTFORM PIN HUNTER"
+  total_pins: 10000
+  agents: 4
+  pins_per_agent: 5
+  booking_ids:
+    - "5871858498"  # Confirmed working (PIN 1965 found)
+    - "5727559423"  # Confirmed working (PIN 2390 found) 
+    - "6860261353"  # Target booking
+    - "6339614781"  # Target booking
+
+# PIN Pool: 0000-9999
+pin_pool:
+  range_start: 0
+  range_end: 9999
+  format: "4_digit_padded"  # 0000, 0001, 0002, etc.
+  
+# Agent Assignment Strategy
+agent_config:
+  agent_A:
+    booking_id: "5871858498"
+    name: "ALPHA_HUNTER"
+    
+  agent_B:
+    booking_id: "5727559423" 
+    name: "BRAVO_HUNTER"
+    
+  agent_C:
+    booking_id: "6860261353"
+    name: "CHARLIE_HUNTER"
+    
+  agent_D:
+    booking_id: "6339614781"
+    name: "DELTA_HUNTER"
+
+# Mission Parameters
+mission_params:
+  wait_time: 10
+  headless: false
+  proxy_enabled: true
+  proxy_server: "https://pr.oxylabs.io:7777"
+  proxy_username: "customer-oxy1p_hnzsA"
+  proxy_password: "oxy1p_hnzsA1"
+  
+# PIN Assignment Logic
+pin_assignment:
+  method: "sequential_5_pin_batches"
+  description: "Each agent gets 5 consecutive PINs from pool"
+  example: |
+    Cycle 1: Agent_A gets 0000-0004, Agent_B gets 0005-0009, etc.
+    Cycle 2: Agent_A gets 0020-0024, Agent_B gets 0025-0029, etc.
+    
+# Results Tracking
+results:
+  log_file: "mission_log.csv"
+  success_file: "victory_{agent_name}.json"
+  screenshot_dir: "mission_screenshots_{agent_name}"

