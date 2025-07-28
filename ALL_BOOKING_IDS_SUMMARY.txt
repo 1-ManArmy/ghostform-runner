@@ -1,0 +1,31 @@
+PROFESSOR JOHNNY'S BOOKING IDS - COMPLETE SUMMARY
+============================================================
+
+Analysis Date: 2025-07-28 05:33:16
+
+BOOKING ID: 6339614781
+  Total tests: 480
+  Unique PINs: 458
+  Successes: 0
+
+BOOKING ID: 6860261353
+  Total tests: 454
+  Unique PINs: 438
+  Successes: 0
+
+BOOKING ID: 6160911170
+  Total tests: 461
+  Unique PINs: 442
+  Successes: 0
+
+BOOKING ID: 5830944764
+  Total tests: 480
+  Unique PINs: 464
+  Successes: 0
+
+GRAND TOTALS:
+---------------
+Total tests across all booking IDs: 1875
+Total unique PINs tested: 1439
+Total successes found: 0
+Overall success rate: 0.00%

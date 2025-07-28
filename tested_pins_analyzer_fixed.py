@@ -1,7 +1,7 @@
 """
-🎯 PROFESSOR JOHNNY'S TESTED PINS ANALYZER
+PROFESSOR JOHNNY'S TESTED PINS ANALYZER
 Creates 4 separate files - one for each agent's tested PINs
-Perfect for tracking what each specialist has covered! 😎
+Perfect for tracking what each specialist has covered!
 """
 
 import csv
@@ -12,7 +12,7 @@ from datetime import datetime
 def analyze_agent_tested_pins():
     """Analyze each agent's tested PINs and create separate files"""
     
-    print("🎯 PROFESSOR JOHNNY'S PIN TRACKING SYSTEM")
+    print("PROFESSOR JOHNNY'S PIN TRACKING SYSTEM")
     print("=" * 60)
     
     # Agent configurations
@@ -77,7 +77,7 @@ def analyze_agent_tested_pins():
     
     # Analyze each agent
     for agent_letter, agent_info in agents.items():
-        print(f"\n🎯 ANALYZING AGENT {agent_letter} - {agent_info['name']}")
+        print(f"\nANALYZING AGENT {agent_letter} - {agent_info['name']}")
         print("-" * 50)
         
         tested_pins = set()
@@ -87,7 +87,7 @@ def analyze_agent_tested_pins():
         # Read agent's CSV file if it exists
         csv_file = agent_info['csv_file']
         if os.path.exists(csv_file):
-            print(f"📄 Reading: {csv_file}")
+            print(f"Reading: {csv_file}")
             try:
                 with open(csv_file, 'r') as file:
                     reader = csv.reader(file)
@@ -104,31 +104,31 @@ def analyze_agent_tested_pins():
                                 if status == "SUCCESS":
                                     success_pins.append(pin)
             except Exception as e:
-                print(f"❌ Error reading {csv_file}: {e}")
+                print(f"Error reading {csv_file}: {e}")
         else:
-            print(f"⚠️ CSV file not found: {csv_file}")
+            print(f"CSV file not found: {csv_file}")
         
         # Find which target pins were actually tested
         target_pins_set = set(agent_info['target_pins'])
         actually_tested = tested_pins.intersection(target_pins_set)
         not_tested_yet = target_pins_set - tested_pins
         
-        print(f"📊 Target booking ID: {agent_info['booking_id']}")
-        print(f"🔢 Target PINs assigned: {len(agent_info['target_pins'])}")
-        print(f"✅ Actually tested: {len(actually_tested)}")
-        print(f"⏳ Not tested yet: {len(not_tested_yet)}")
-        print(f"🌟 Success PINs: {len(success_pins)}")
+        print(f"Target booking ID: {agent_info['booking_id']}")
+        print(f"Target PINs assigned: {len(agent_info['target_pins'])}")
+        print(f"Actually tested: {len(actually_tested)}")
+        print(f"Not tested yet: {len(not_tested_yet)}")
+        print(f"Success PINs: {len(success_pins)}")
         
         # Create individual agent file
         filename = f"AGENT_{agent_letter}_TESTED_PINS.txt"
-        with open(filename, 'w') as f:
-            f.write(f"🎯 AGENT {agent_letter} - {agent_info['name']} TESTED PINS\n")
+        with open(filename, 'w', encoding='utf-8') as f:
+            f.write(f"AGENT {agent_letter} - {agent_info['name']} TESTED PINS\n")
             f.write("=" * 60 + "\n\n")
             f.write(f"Target Booking ID: {agent_info['booking_id']}\n")
             f.write(f"Agent Mission: Test {len(agent_info['target_pins'])} strategic PINs\n")
             f.write(f"Analysis Date: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
             
-            f.write("📊 TESTING STATISTICS:\n")
+            f.write("TESTING STATISTICS:\n")
             f.write("-" * 30 + "\n")
             f.write(f"Target PINs assigned: {len(agent_info['target_pins'])}\n")
             f.write(f"Actually tested: {len(actually_tested)}\n")
@@ -137,14 +137,14 @@ def analyze_agent_tested_pins():
             f.write(f"Testing completion: {(len(actually_tested)/len(agent_info['target_pins'])*100):.1f}%\n\n")
             
             if success_pins:
-                f.write("🌟 SUCCESS PINS FOUND:\n")
+                f.write("SUCCESS PINS FOUND:\n")
                 f.write("-" * 20 + "\n")
                 for pin in success_pins:
-                    f.write(f"   🎉 {pin}\n")
+                    f.write(f"   SUCCESS: {pin}\n")
                 f.write("\n")
             
             if actually_tested:
-                f.write("✅ TESTED PINS (sorted):\n")
+                f.write("TESTED PINS (sorted):\n")
                 f.write("-" * 25 + "\n")
                 sorted_tested = sorted(list(actually_tested))
                 for i in range(0, len(sorted_tested), 10):
@@ -153,7 +153,7 @@ def analyze_agent_tested_pins():
                 f.write("\n")
             
             if not_tested_yet:
-                f.write("⏳ NOT TESTED YET (remaining targets):\n")
+                f.write("NOT TESTED YET (remaining targets):\n")
                 f.write("-" * 35 + "\n")
                 sorted_remaining = sorted(list(not_tested_yet))
                 for i in range(0, len(sorted_remaining), 10):
@@ -161,23 +161,23 @@ def analyze_agent_tested_pins():
                     f.write(f"   {', '.join(row_pins)}\n")
                 f.write("\n")
             
-            f.write("🎯 ORIGINAL TARGET PIN LIST:\n")
+            f.write("ORIGINAL TARGET PIN LIST:\n")
             f.write("-" * 30 + "\n")
             target_pins = agent_info['target_pins']
             for i in range(0, len(target_pins), 10):
                 row_pins = target_pins[i:i+10]
                 f.write(f"   {', '.join(row_pins)}\n")
         
-        print(f"💾 Created: {filename}")
+        print(f"Created: {filename}")
     
-    print(f"\n🎊 ANALYSIS COMPLETE!")
-    print("📁 Created 4 separate files:")
-    print("   📄 AGENT_A_TESTED_PINS.txt")
-    print("   📄 AGENT_B_TESTED_PINS.txt") 
-    print("   📄 AGENT_C_TESTED_PINS.txt")
-    print("   📄 AGENT_D_TESTED_PINS.txt")
+    print(f"\nANALYSIS COMPLETE!")
+    print("Created 4 separate files:")
+    print("   AGENT_A_TESTED_PINS.txt")
+    print("   AGENT_B_TESTED_PINS.txt") 
+    print("   AGENT_C_TESTED_PINS.txt")
+    print("   AGENT_D_TESTED_PINS.txt")
     
-    print(f"\n🍀 Ready for Professor's LUCKY 50 PINS! 🤣")
+    print(f"\nReady for Professor's LUCKY 50 PINS!")
 
 if __name__ == "__main__":
     analyze_agent_tested_pins()
